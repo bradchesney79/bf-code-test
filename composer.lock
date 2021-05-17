@@ -1,0 +1,72 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "24bda321de2a07880fcf208f58fe35ca",
+    "packages": [
+        {
+            "name": "bradchesney79/effortless-hs256-jwt",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bradchesney79/effortless-hs256-jwt.git",
+                "reference": "1819619c723299f559f508596bf8d032a7315617"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bradchesney79/effortless-hs256-jwt/zipball/1819619c723299f559f508596bf8d032a7315617",
+                "reference": "1819619c723299f559f508596bf8d032a7315617",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "phpmd/phpmd": "^2.9",
+                "phpstan/phpstan": "^0",
+                "phpunit/php-code-coverage": "^9",
+                "phpunit/phpunit": "^9"
+            },
+            "suggest": {
+                "ext-phpdbg": "^0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "bradchesney79\\Ehjwt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "BradChesney79",
+                    "email": "bradchesney79@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "An opinionated library to facilitate JWT management in part by disallowing undesirable possibilities",
+            "support": {
+                "issues": "https://github.com/bradchesney79/effortless-hs256-jwt/issues",
+                "source": "https://github.com/bradchesney79/effortless-hs256-jwt/tree/v1.1.1"
+            },
+            "time": "2021-05-17T20:15:52+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "bradchesney79/battleface-code-test",
+    "description": "Just a squirrel trying to get a nut",
+    "type": "project",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "BradChesney79",
+            "email": "bradchesney79@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "bradchesney79/effortless-hs256-jwt": "^1.1"
+    }
+}
