@@ -54,6 +54,11 @@
         <div id="content-div-status-data">
         </div>
     </div>
+    <pre>
+    <?php
+    var_dump($_SERVER);
+    ?>
+    </pre>
 <script type="application/javascript">
     <?php
         require '/var/www/html/js/jq.js';

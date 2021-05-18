@@ -1,2 +1,2 @@
 <?php
-require '/var/www/html/views/home.php';
+require WEBROOT . '/views/home.php';
