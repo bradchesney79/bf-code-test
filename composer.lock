@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bradchesney79/effortless-hs256-jwt",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bradchesney79/effortless-hs256-jwt.git",
-                "reference": "1819619c723299f559f508596bf8d032a7315617"
+                "reference": "ddaad6a516c32a9a58b4046e8d84ce7d365953fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bradchesney79/effortless-hs256-jwt/zipball/1819619c723299f559f508596bf8d032a7315617",
-                "reference": "1819619c723299f559f508596bf8d032a7315617",
+                "url": "https://api.github.com/repos/bradchesney79/effortless-hs256-jwt/zipball/ddaad6a516c32a9a58b4046e8d84ce7d365953fe",
+                "reference": "ddaad6a516c32a9a58b4046e8d84ce7d365953fe",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
             "type": "project",
             "autoload": {
                 "psr-4": {
-                    "bradchesney79\\Ehjwt\\": "src/"
+                    "BradChesney79\\EHJWT\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -55,9 +55,9 @@
             "description": "An opinionated library to facilitate JWT management in part by disallowing undesirable possibilities",
             "support": {
                 "issues": "https://github.com/bradchesney79/effortless-hs256-jwt/issues",
-                "source": "https://github.com/bradchesney79/effortless-hs256-jwt/tree/v1.1.1"
+                "source": "https://github.com/bradchesney79/effortless-hs256-jwt/tree/v1.1.2"
             },
-            "time": "2021-05-17T20:15:52+00:00"
+            "time": "2021-05-18T19:16:11+00:00"
         }
     ],
     "packages-dev": [],

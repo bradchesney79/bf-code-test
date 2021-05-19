@@ -1,7 +1,7 @@
 <?php
 
-use ORM;
-use RuntimeException;
+//use ORM;
+//use RuntimeException;
 
 Class Quotation
 {
@@ -17,9 +17,9 @@ Class Quotation
     // Endorsements, Riders... by ID
     private array $modifications;
 
-    private string $age;
+    private array $age;
 
-    private string $currency_id;
+    private string $currency;
 
     private DateTime $start_date;
 
@@ -48,20 +48,31 @@ Class Quotation
         }
     }
 
-    // stored as immutable records-- updates supercede records stored earlier
-    public function saveQuotation(): bool {
-        if ($this->validateQuotation()) {
-            try {
-                $this->age = $this->sortAge($this->age);
-                // insert into persistent storage for these type of quotations
-            }
-            catch (Exception $exception) {
-                throw new RuntimeException('Failed to save to persistent storage', 0);
-            }
-            return true;
-        }
-        else {
-            throw new RuntimeException('Failed saving quotation at verification', 0);
+    public function setOrUpdateCurrency(string $iso4217CurrencyCode) {
+        $this->currency = $iso4217CurrencyCode;
+    }
+
+    public function setStartDate($iso8601DateString): void {
+        $this->start_date = new DateTime(strtotime($iso8601DateString));
+    }
+
+    public function setEndDate($iso8601DateString): void {
+        $this->end_date = new DateTime(strtotime($iso8601DateString));
+    }
+
+    public function getTripLength() {
+        $tripLength = $this->start_date->diff($this->end_date);
+        $tripDays = $tripLength->days;
+        $tripDays += 1; // account for first day as day 0
+        return $tripDays;
+    }
+
+    public function setAgesOfTravellers(array $agesArray): void {
+        $sortedAges = rsort($agesArray);
+        $this->age[] = $sortedAges;
+        error_log(var_dump($agesArray),0, '/var/log/nginx/error.log');
+        if ($this->age[0] < 18) {
+            throw new Exception('What do you think this is, a Disney movie? Travelling without an adult. Pfft.');
         }
     }
 
@@ -70,7 +81,7 @@ Class Quotation
     public function retriveQuotationsByDate(DateTime $search_date_start, DateTime $search_date_end, int $limit = 10): array {
         // 2688 -- when Rufus, goes to meet a young Bill & Ted... why not...
         $quotations = [];
-        $search_date_start
+        $search_date_start;
         // get quotations
         // select from quotations where client_id = $client_id where $date_quoted > $search_date_start and $date_quoted < $search_date_end limit $limit
         return $quotations;
@@ -88,13 +99,16 @@ Class Quotation
     }
 
     public function retrieveQuotationById(int $quotation_id): Quotation {
-        if (isset())
-        //select from quotations where quotation_id = $quotation_id
-        return $quotationObject;
+        if (isset($quotation_id)) {
+            //select from quotations where quotation_id = $quotation_id
+            $quotationObject = new stdClass();
+            return $quotationObject;
+        }
     }
 
-    public function loadQuotation(int $quotation_id): Quotation {
+    public function loadQuotation(int $quotation_id): bool {
         //oh jeez, I don't have time to mock the service and set all the properties
+        return true;
     }
 
     private function validateQuotation(): bool {
@@ -122,10 +136,49 @@ Class Quotation
         return true;
     }
 
-    private function generateSortedAgeArray(array $age): array
-    {
-        $ageArray = explode(',', $age);
-        return sort($ageArray, SORT_NUMERIC);
+    private function lookupAgeLoad(int $age) {
+        if ($age < 18)
+        {
+            //throw new RuntimeException('You\'ll shoot your eye out kid.');
+        }
+        elseif ($age < 31)
+        {
+            return 0.6;
+        }
+        elseif ($age < 41)
+        {
+            return 0.7;
+        }
+        elseif ($age < 51)
+        {
+            return 0.8;
+        }
+        elseif ($age < 61)
+        {
+            return 0.9;
+        }
+        elseif ($age < 71)
+        {
+            return 1;
+        }
+        else {
+            throw new \RuntimeException('Too old to travel, sorry.');
+        }
+    }
+
+    public function setTotalCost() {
+        $days = $this->getTripLength();
+        $total = 0;
+
+        foreach ($this->age as $age) {
+            $load = $this->lookupAgeLoad($age);
+            $total += 3 * $load * $days;
+        }
+        $this->total=$total;
+    }
+
+    public function getQuotationAsJson() {
+        return json_encode($this);
     }
 
 }
